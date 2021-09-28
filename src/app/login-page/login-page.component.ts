@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AccountService } from '../_services/account.service';
+import { NavComponent } from '../nav/nav.component';
 
 @Component({
   selector: 'app-login-page',
@@ -7,6 +8,8 @@ import { AccountService } from '../_services/account.service';
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent implements OnInit {
+ 
+
   model: any = {}
   loggedIn: boolean = false;
 
@@ -15,10 +18,12 @@ export class LoginPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
   login(){
     this.accountService.login(this.model).subscribe(response => {
       console.log(response);
       this.loggedIn = true;
+    
     }, error => {
       console.log(error);
     })

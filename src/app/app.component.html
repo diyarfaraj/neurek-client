@@ -4,4 +4,4 @@
         <li *ngFor='let user of users' >{{user.id}} - {{user.email}}</li>
     </ul>
 </div>
-<app-login-page></app-login-page>
+<app-login-page *ngIf="!accountService.state.loggedIn"></app-login-page>

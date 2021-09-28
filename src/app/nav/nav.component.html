@@ -13,13 +13,25 @@
                 <li class="nav-item">
                   <a class="nav-link" href="#">FÖR ARBETSGIVARE</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="!accountService.state.loggedIn">
                   <a class="nav-link " href="#">LOGGA IN</a>
                 </li>
-                <li class="nav-item bg-light">
+                <li class="nav-item bg-light" *ngIf="!accountService.state.loggedIn">
                     <a class="nav-link text-dark font-weight-bold" href="#">REGISTRERA</a>
                   </li>
+                  <li class="nav-item bg-light" *ngIf="accountService.state.loggedIn">
+                    <a class="nav-link text-dark font-weight-bold" href="#">LOGGA UT</a>
+                  </li>
               </ul>
+
+              <div class="dropdown"  *ngIf="accountService.state.loggedIn" dropdown>
+                <a class="dropdown-toggle text-light" dropdownToggle >Välkommen användare</a>
+                <div class="dropdown-menu mt-3" *dropdownMenu>
+                  <a class="dropdown-item">Redigera din profil</a>
+                  <div class="dropdown-divider"></div>
+                  <a  class="dropdown-item">Logga ut</a>
+                </div>
+              </div>
              
             </div>
         <!--   </div>  -->
