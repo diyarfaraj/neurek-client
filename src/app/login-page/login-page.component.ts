@@ -16,14 +16,29 @@ export class LoginPageComponent implements OnInit {
   constructor(private accountService: AccountService) { }
 
   ngOnInit(): void {
+    this.getCurrentUser();
   }
 
-
+//TODO: set current user in persistence
   login(){
     this.accountService.login(this.model).subscribe(response => {
       console.log(response);
       this.loggedIn = true;
     
+    }, error => {
+      console.log(error);
+    })
+  }
+
+  logout() {
+    this.accountService.logout();
+    this.loggedIn = false;
+  }
+
+  getCurrentUser(){
+    this.accountService.currentUser$.subscribe(user => {
+      console.log(user, "HEHEHEHEHEHEHEHE");
+      this.loggedIn = !!user;
     }, error => {
       console.log(error);
     })
