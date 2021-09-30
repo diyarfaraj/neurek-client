@@ -38,6 +38,6 @@ return this.http.post<User>(this.baseUrl + 'account/login', model).pipe(
   
    logout() {
     localStorage.removeItem('user');
-    this.currentUserSource.next(undefined);
+    this.currentUserSource.next(null!);
   }
 }

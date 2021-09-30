@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavComponent } from './nav/nav.component';
-import { LoginPageComponent } from './login-page/login-page.component';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from './_services/account.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -15,8 +14,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent,
-    LoginPageComponent
+    NavComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +25,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     BsDropdownModule.forRoot()
 
   ],
-  providers: [NavComponent, LoginPageComponent ,AccountService],
+  providers: [NavComponent ,AccountService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
