@@ -21,9 +21,9 @@ loggedIn :false,
 
   login(model:any){
     this.state.loggedIn = true;
-return this.http.post<User>(this.baseUrl + 'account/login', model).pipe(
-  map((response: User) => {
-    const user: User = response;
+      return this.http.post<User>(this.baseUrl + 'account/login', model).pipe(
+        map((response: User) => {
+        const user: User = response;
     if(user){
       localStorage.setItem('user', JSON.stringify(user));
       this.currentUserSource.next(user);
