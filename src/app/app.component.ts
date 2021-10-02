@@ -6,31 +6,20 @@ import { AccountService } from './_services/account.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'Neurek';
-  users : any;
+  users: any;
 
-  constructor(private http: HttpClient, public accountService: AccountService){}
-  
+  constructor(public accountService: AccountService) {}
+
   ngOnInit() {
-    this.getUsers();
     this.setCurrentUser();
   }
 
   setCurrentUser() {
     const user: User = JSON.parse(localStorage.getItem('user') || '{}');
     this.accountService.setCurrentUser(user);
-  }
-
-  getUsers() {
-    this.http.get('http://localhost:56340/api/users').subscribe(response => {
-      this.users = response;
-      console.log(this.users);
-    }, error => {
-      console.log(error); 
-    });
-    
   }
 }
