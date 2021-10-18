@@ -1,15 +1,50 @@
-<div class="card mb-4">
-  <div class="card-img-wrapper">
-    <!--   <img
-      src="{{ candidate.photoUrl }}"
-      alt="{{ candidate.jobTitle }}"
-      class="card-img-top"
-    /> -->
-    <div class="card-body p-1">
-      <h6 class="card-title text-center mb-1">
-        <i class="fa fa-user mr-2"></i>{{ candidate.jobTitle }}
-      </h6>
-      <p class="card-text text-muted">{{ candidate.jobTitle }}</p>
+<div class="card b-1 hover-shadow mb-20">
+  <div class="media card-body">
+    <div class="media-left pr-12">
+      <img
+        class="avatar avatar-xl no-radius"
+        src="https://bootdey.com/img/Content/avatar/avatar1.png"
+        alt="..."
+      />
+    </div>
+    <div class="media-body">
+      <div class="mb-2">
+        <span class="fs-20 pr-16">{{ candidate.jobTitle }}</span>
+      </div>
+      <small class="fs-16 fw-300 ls-1">{{ candidate.description }}</small>
+    </div>
+    <div class="media-right text-right d-none d-md-block">
+      <p class="fs-14 text-fade mb-12">
+        <i class="fa fa-map-marker pr-1"></i> {{ candidate.city }}
+      </p>
+      <span class="text-fade" *ngFor="let preference of candidate.preferences"
+        ><i class="fa fa-money pr-1"></i> {{ preference.salaryPerMonth }}</span
+      >
     </div>
   </div>
+  <footer class="card-footer flexbox align-items-center">
+    <div class="d-flex flex-row">
+      <p *ngFor="let skill of candidate.skills">
+        <!-- <i class="devicon-{{ skill.name }}-plain colored"></i> -->
+
+        <img
+          style="height: 25px"
+          src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/{{
+            skill.name
+          }}/{{ skill.name }}-original.svg"
+        />
+      </p>
+    </div>
+    <div class="card-hover-show">
+      <a class="btn btn-xs fs-10 btn-bold btn-info" href="#">Download CV</a>
+      <a
+        class="btn btn-xs fs-10 btn-bold btn-primary"
+        href="#"
+        data-toggle="modal"
+        data-target="#modal-contact"
+        >Contact</a
+      >
+      <!-- <a class="btn btn-xs fs-10 btn-bold btn-warning" href="#">Delete</a> -->
+    </div>
+  </footer>
 </div>

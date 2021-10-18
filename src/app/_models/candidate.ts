@@ -9,6 +9,9 @@ export interface Candidate {
   email: string;
   firstName: string;
   lastName: string;
+  jobTitle: string;
+  description: string;
+  city: string;
   photoUrl: string;
   age: number;
   created: Date;

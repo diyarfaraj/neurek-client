@@ -22,6 +22,7 @@ import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
 import { CandidateListComponent } from './candidates/candidate-list/candidate-list.component';
 import { CandidateDetailComponent } from './candidates/candidate-detail/candidate-detail.component';
+import { CandidateCardComponent } from './candidates/candidate-card/candidate-card.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { CandidateDetailComponent } from './candidates/candidate-detail/candidat
     ServerErrorComponent,
     CandidateListComponent,
     CandidateDetailComponent,
+    CandidateCardComponent,
   ],
   imports: [
     BrowserModule,
