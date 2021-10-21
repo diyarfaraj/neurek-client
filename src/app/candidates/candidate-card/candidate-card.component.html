@@ -28,22 +28,35 @@
         <!-- <i class="devicon-{{ skill.name }}-plain colored"></i> -->
 
         <img
-          style="height: 25px"
+          style="height: 25px; margin-right: 8px"
           src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/{{
             skill.devIconName
           }}/{{ skill.devIconName }}-original.svg"
         />
       </p>
     </div>
-    <div class="card-hover-show">
-      <a class="btn btn-xs fs-10 btn-bold btn-info" href="#">Download CV</a>
+    <div class="card-hover-show animate">
       <a
+        routerLink="/candidates/{{ candidate.email }}"
+        title="Show profile"
+        class="btn btn-xs fs-10 btn-bold btn-info mr-1"
+        href="#"
+        ><i class="fa fa-user"></i
+      ></a>
+      <a
+        title="Download CV"
+        class="btn btn-xs fs-10 btn-bold btn-info mr-1"
+        href="#"
+        ><i class="fa fa-download"></i
+      ></a>
+      <a
+        title="Message candidate"
         class="btn btn-xs fs-10 btn-bold btn-primary"
         href="#"
         data-toggle="modal"
         data-target="#modal-contact"
-        >Contact</a
-      >
+        ><i class="fa fa-comments"></i
+      ></a>
       <!-- <a class="btn btn-xs fs-10 btn-bold btn-warning" href="#">Delete</a> -->
     </div>
   </footer>

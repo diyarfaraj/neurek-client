@@ -23,6 +23,7 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
 import { CandidateListComponent } from './candidates/candidate-list/candidate-list.component';
 import { CandidateDetailComponent } from './candidates/candidate-detail/candidate-detail.component';
 import { CandidateCardComponent } from './candidates/candidate-card/candidate-card.component';
+import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { CandidateCardComponent } from './candidates/candidate-card/candidate-ca
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     NavComponent,
     AccountService,
   ],

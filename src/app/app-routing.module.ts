@@ -22,7 +22,7 @@ const routes: Routes = [
         component: CandidateListComponent,
         canActivate: [AuthGuard],
       },
-      { path: 'candidates/id', component: CandidateDetailComponent },
+      { path: 'candidates/:email', component: CandidateDetailComponent },
       { path: 'lists', component: ListsComponent },
       { path: 'messages', component: MessagesComponent },
     ],
