@@ -18,14 +18,13 @@ export class CandidateDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadCandidate();
-    console.log('heeeee', this.candidate);
+    console.log(this.candidate.languages);
   }
 
   loadCandidate() {
     this.candidateService
       .getCandidate(this.route.snapshot.paramMap.get('email') || '{}')
       .subscribe((candidate) => {
-        console.log(candidate);
         this.candidate = candidate;
       });
   }

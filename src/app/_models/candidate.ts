@@ -1,5 +1,6 @@
 import { Education } from './education';
 import { Experience } from './experience';
+import { Language } from './language';
 import { Photo } from './photo';
 import { Preference } from './preference';
 import { Skill } from './skill';
@@ -21,6 +22,7 @@ export interface Candidate {
   educations: Education[];
   experiences: Experience[];
   preferences: Preference[];
+  languages: Language[];
   candidateFiles: any[];
   photos: Photo[];
 }

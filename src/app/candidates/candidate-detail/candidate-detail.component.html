@@ -1,1 +1,2 @@
-<h1>{{ candidate.email }}</h1>
+<h1 *ngIf="candidate">{{ candidate.languages }}</h1>
+<div *ngFor="let item of candidate.languages">{{ item.name }}</div>
