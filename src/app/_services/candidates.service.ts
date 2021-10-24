@@ -16,6 +16,7 @@ export class CandidatesService {
   }
 
   getCandidate(email: string) {
+    console.log('from candidateservice');
     return this.http.get<Candidate>(this.baseUrl + 'users/' + email);
   }
 }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CandidateDetailComponent } from './candidates/candidate-detail/candidate-detail.component';
+import { CandidateEditComponent } from './candidates/candidate-edit/candidate-edit.component';
 import { CandidateListComponent } from './candidates/candidate-list/candidate-list.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
@@ -20,9 +21,9 @@ const routes: Routes = [
       {
         path: 'candidates',
         component: CandidateListComponent,
-        canActivate: [AuthGuard],
       },
       { path: 'candidates/:email', component: CandidateDetailComponent },
+      { path: 'candidate/edit', component: CandidateEditComponent },
       { path: 'lists', component: ListsComponent },
       { path: 'messages', component: MessagesComponent },
     ],

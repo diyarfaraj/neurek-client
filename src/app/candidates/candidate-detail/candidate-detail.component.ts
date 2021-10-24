@@ -18,7 +18,6 @@ export class CandidateDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadCandidate();
-    console.log(this.candidate.languages);
   }
 
   loadCandidate() {

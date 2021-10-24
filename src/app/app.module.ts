@@ -24,6 +24,7 @@ import { CandidateListComponent } from './candidates/candidate-list/candidate-li
 import { CandidateDetailComponent } from './candidates/candidate-detail/candidate-detail.component';
 import { CandidateCardComponent } from './candidates/candidate-card/candidate-card.component';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
+import { CandidateEditComponent } from './candidates/candidate-edit/candidate-edit.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { JwtInterceptor } from './_interceptors/jwt.interceptor';
     CandidateListComponent,
     CandidateDetailComponent,
     CandidateCardComponent,
+    CandidateEditComponent,
   ],
   imports: [
     BrowserModule,
