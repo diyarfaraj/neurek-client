@@ -1,6 +1,9 @@
 export interface Experience {
   id: number;
-  title: string;
-  description: string;
+  jobTtitle: string;
+  companyName: string;
+  fromDate: Date;
+  toDate: Date;
+  jobDescription: string;
   yearsOfWorking: number;
 }

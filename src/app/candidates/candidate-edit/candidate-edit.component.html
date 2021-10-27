@@ -1,1 +1,128 @@
-<h1 *ngIf="candidate">{{ candidate.email }}</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <h1>Your Profile</h1>
+    </div>
+    <div class="col-8">
+      <div class="alert alert-info">
+        <strong>Information: </strong> You have made changes. Any unsaved
+        changes will be lost.
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="card left-profile-card">
+        <div class="card-body">
+          <div class="text-center">
+            <img
+              src="https://bootdey.com/img/Content/avatar/avatar2.png"
+              alt=""
+              class="user-profile"
+            />
+            <h3>{{ candidate.email }}</h3>
+            <p>{{ candidate.description }}</p>
+          </div>
+          <div class="personal-info mt-3">
+            <h3>Personal Information</h3>
+            <ul class="personal-list">
+              <li>
+                <i class="fa fa-briefcase"></i
+                ><span>{{ candidate.jobTitle }}</span>
+              </li>
+              <li>
+                <i class="fa fa-map-marker"></i
+                ><span> {{ candidate.city }}</span>
+              </li>
+              <li>
+                <i class="fa fa-envelope"></i><span>{{ candidate.email }}</span>
+              </li>
+              <li><i class="fa fa-phone"></i><span>1234564343</span></li>
+            </ul>
+          </div>
+          <div class="skill">
+            <h3>Skills</h3>
+            <div class="flex-row flex-wrap align-content-start">
+              <div *ngFor="let skill of candidate.skills">
+                <div style="width: 100%; align-self: center; margin: auto">
+                  <img
+                    title="{{ skill.name }}"
+                    style="height: 25px; margin-right: 8px"
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/{{
+                      skill.devIconName
+                    }}/{{ skill.devIconName }}-original.svg"
+                  />
+                </div>
+                <!--     <p style="align-self: baseline">
+                    {{ skill.yearsOfExperience }}
+                  </p> -->
+              </div>
+            </div>
+          </div>
+          <div class="languages">
+            <h3>Languages</h3>
+            <div *ngFor="let lang of candidate.languages">
+              <p>{{ lang.name }}</p>
+              <div class="progress mb-3">
+                <div
+                  class="progress-bar"
+                  role="progressbar"
+                  style="width: 90%"
+                  aria-valuenow="50"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-9">
+      <div class="card right-profile-card">
+        <div class="card-header alert-primary">
+          <tabset class="candidate-tabset">
+            <tab heading="Erfarenhet">
+              <div *ngFor="let experience of candidate.experiences">
+                <div class="work-container">
+                  <h3>
+                    {{ experience.jobTtitle }} - {{ experience.companyName }} ,
+                    Borås
+                  </h3>
+                  <h4>
+                    <i class="far fa-calendar-alt"></i
+                    >{{ experience.fromDate }} to
+                    <span class="badge badge-info">{{
+                      experience.toDate
+                    }}</span>
+                  </h4>
+                  <p>
+                    {{ experience.jobDescription }}
+                  </p>
+                </div>
+              </div>
+            </tab>
+            <tab heading="Utbildning">
+              <div *ngFor="let education of candidate.educations">
+                <div class="work-container">
+                  <h3>{{ education.majoredIn }}- {{ education.city }}</h3>
+                  <h4>
+                    <i class="far fa-calendar-alt"></i
+                    >{{ education.educationStartDate }} to
+                    <span class="badge badge-info">{{
+                      education.educationEndDate
+                    }}</span>
+                  </h4>
+                  <p>
+                    {{ education.educationDescription }}
+                  </p>
+                </div>
+              </div>
+            </tab>
+          </tabset>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
