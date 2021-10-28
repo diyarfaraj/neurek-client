@@ -86,10 +86,69 @@
             <tab heading="Erfarenhet">
               <div *ngFor="let experience of candidate.experiences">
                 <div class="work-container">
-                  <h3>
-                    {{ experience.jobTtitle }} - {{ experience.companyName }} ,
-                    Borås
-                  </h3>
+                  <form>
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-floating mb-3">
+                          <textarea
+                            type="text"
+                            class="form-control"
+                            name="jobTitle"
+                            id="floatingTextInput1"
+                            [(ngModel)]="experience.jobTtitle"
+                          ></textarea>
+                          <label for="floatingTextInput1">Job title</label>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-floating mb-3">
+                          <textarea
+                            type="text"
+                            class="form-control"
+                            name="compnayName"
+                            id="floatingTextInput1"
+                            [(ngModel)]="experience.companyName"
+                          ></textarea>
+                          <label for="floatingTextInput2">Company Name</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <textarea
+                        type="text"
+                        class="form-control"
+                        rows="2"
+                        style="height: 150px"
+                        name="description"
+                        id="floatingTextInput1"
+                        [(ngModel)]="experience.jobDescription"
+                      ></textarea>
+                      <label for="floatingEmailInput">Job description</label>
+                    </div>
+                    <!--   <div class="form-check form-switch mb-3">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="flexSwitchCheckChecked"
+                        checked
+                      />
+                      <label
+                        class="form-check-label"
+                        for="flexSwitchCheckChecked"
+                        >I agree to the Terms and Conditions of this
+                        Website.</label
+                      >
+                    </div> -->
+                  </form>
+                  <!-- 
+                  <h3>Job Title - Company Name</h3>
+                  <textarea
+                    [(ngModel)]="experience.jobTtitle"
+                    class="form-control"
+                    style="max-width: 30%"
+                    name="jobTitle"
+                    rows="1"
+                  ></textarea>
                   <h4>
                     <i class="far fa-calendar-alt"></i
                     >{{ experience.fromDate }} to
@@ -99,9 +158,12 @@
                   </h4>
                   <p>
                     {{ experience.jobDescription }}
-                  </p>
+                  </p> -->
                 </div>
               </div>
+              <button type="submit" class="btn btn-primary float-right">
+                Submit
+              </button>
             </tab>
             <tab heading="Utbildning">
               <div *ngFor="let education of candidate.educations">
