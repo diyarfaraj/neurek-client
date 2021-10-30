@@ -1,17 +1,16 @@
 <div class="container">
-  <div class="row">
-    <div class="col-4">
-      <h1>Your Profile</h1>
-    </div>
-    <div class="col-8">
-      <div class="alert alert-info">
-        <strong>Information: </strong> You have made changes. Any unsaved
-        changes will be lost.
+  <div class="row" *ngIf="candidate">
+    <div class="row">
+      <div class="col-4">
+        <h1>Your Profile</h1>
+      </div>
+      <div class="col-8" *ngIf="editForm">
+        <div class="alert alert-info" *ngIf="editForm.dirty">
+          <strong>Information: </strong> You have made changes. Any unsaved
+          changes will be lost.
+        </div>
       </div>
     </div>
-  </div>
-
-  <div class="row">
     <div class="col-lg-3">
       <div class="card left-profile-card">
         <div class="card-body">
@@ -86,7 +85,11 @@
             <tab heading="Erfarenhet">
               <div *ngFor="let experience of candidate.experiences">
                 <div class="work-container">
-                  <form>
+                  <form
+                    #editForm="ngForm"
+                    id="editForm"
+                    (ngSubmit)="updateCandidate()"
+                  >
                     <div class="row">
                       <div class="col">
                         <div class="form-floating mb-3">
@@ -105,7 +108,7 @@
                           <textarea
                             type="text"
                             class="form-control"
-                            name="compnayName"
+                            name="companyName"
                             id="floatingTextInput1"
                             [(ngModel)]="experience.companyName"
                           ></textarea>
@@ -119,51 +122,25 @@
                         class="form-control"
                         rows="2"
                         style="height: 150px"
-                        name="description"
+                        name="jobDescription"
                         id="floatingTextInput1"
                         [(ngModel)]="experience.jobDescription"
                       ></textarea>
                       <label for="floatingEmailInput">Job description</label>
                     </div>
-                    <!--   <div class="form-check form-switch mb-3">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        id="flexSwitchCheckChecked"
-                        checked
-                      />
-                      <label
-                        class="form-check-label"
-                        for="flexSwitchCheckChecked"
-                        >I agree to the Terms and Conditions of this
-                        Website.</label
-                      >
-                    </div> -->
                   </form>
-                  <!-- 
-                  <h3>Job Title - Company Name</h3>
-                  <textarea
-                    [(ngModel)]="experience.jobTtitle"
-                    class="form-control"
-                    style="max-width: 30%"
-                    name="jobTitle"
-                    rows="1"
-                  ></textarea>
-                  <h4>
-                    <i class="far fa-calendar-alt"></i
-                    >{{ experience.fromDate }} to
-                    <span class="badge badge-info">{{
-                      experience.toDate
-                    }}</span>
-                  </h4>
-                  <p>
-                    {{ experience.jobDescription }}
-                  </p> -->
                 </div>
               </div>
-              <button type="submit" class="btn btn-primary float-right">
-                Submit
-              </button>
+              <div *ngIf="editForm">
+                <button
+                  [disabled]="!editForm.dirty"
+                  form="editForm"
+                  type="submit"
+                  class="btn btn-primary float-right"
+                >
+                  Submit
+                </button>
+              </div>
             </tab>
             <tab heading="Utbildning">
               <div *ngFor="let education of candidate.educations">

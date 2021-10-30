@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs/operators';
 import { Candidate } from 'src/app/_models/candidate';
+import { Experience } from 'src/app/_models/experience';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 import { CandidatesService } from 'src/app/_services/candidates.service';
@@ -11,12 +14,22 @@ import { CandidatesService } from 'src/app/_services/candidates.service';
   styleUrls: ['./candidate-edit.component.css'],
 })
 export class CandidateEditComponent implements OnInit {
+  @ViewChild('editForm') editForm: NgForm = new NgForm([], []);
   candidate: Candidate;
   user: User;
 
+  @HostListener('window:beforeunload', ['$event']) unloadNotification(
+    $event: any
+  ) {
+    if (this.editForm.dirty) {
+      $event.returnValue = true;
+    }
+  }
+
   constructor(
     private accountService: AccountService,
-    private canidateService: CandidatesService
+    private canidateService: CandidatesService,
+    private toastr: ToastrService
   ) {
     this.accountService.currentUser$
       .pipe(take(1))
@@ -32,5 +45,11 @@ export class CandidateEditComponent implements OnInit {
     this.canidateService
       .getCandidate(this.user.email)
       .subscribe((candidate) => (this.candidate = candidate));
+  }
+
+  updateCandidate() {
+    console.log(this.candidate);
+    this.toastr.success('Profile updated');
+    this.editForm.reset(this.candidate.experiences);
   }
 }
