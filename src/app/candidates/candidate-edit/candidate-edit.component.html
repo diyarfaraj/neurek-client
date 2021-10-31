@@ -90,50 +90,45 @@
                     id="editForm"
                     (ngSubmit)="updateCandidate()"
                   >
-                    <div class="row">
-                      <div class="col">
-                        <div class="form-floating mb-3">
-                          <textarea
-                            type="text"
-                            class="form-control"
-                            name="jobTitle"
-                            id="floatingTextInput1"
-                            [(ngModel)]="experience.jobTtitle"
-                          ></textarea>
-                          <label for="floatingTextInput1">Job title</label>
+                    <fieldset ngModelGroup="experiences">
+                      <div class="row">
+                        <div class="col">
+                          <div class="form-floating mb-3">
+                            <textarea
+                              class="form-control"
+                              name="jobTitle"
+                              [(ngModel)]="experience.jobTitle"
+                            ></textarea>
+                            <label for="floatingTextInput1">Job title</label>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="form-floating mb-3">
+                            <textarea
+                              class="form-control"
+                              name="companyName"
+                              [(ngModel)]="experience.companyName"
+                            ></textarea>
+                            <label for="floatingTextInput2">Company Name</label>
+                          </div>
                         </div>
                       </div>
-                      <div class="col">
-                        <div class="form-floating mb-3">
-                          <textarea
-                            type="text"
-                            class="form-control"
-                            name="companyName"
-                            id="floatingTextInput1"
-                            [(ngModel)]="experience.companyName"
-                          ></textarea>
-                          <label for="floatingTextInput2">Company Name</label>
-                        </div>
+                      <div class="form-floating mb-3">
+                        <textarea
+                          class="form-control"
+                          rows="2"
+                          style="height: 150px"
+                          name="jobDescription"
+                          [(ngModel)]="experience.jobDescription"
+                        ></textarea>
+                        <label for="floatingEmailInput">Job description</label>
                       </div>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <textarea
-                        type="text"
-                        class="form-control"
-                        rows="2"
-                        style="height: 150px"
-                        name="jobDescription"
-                        id="floatingTextInput1"
-                        [(ngModel)]="experience.jobDescription"
-                      ></textarea>
-                      <label for="floatingEmailInput">Job description</label>
-                    </div>
+                    </fieldset>
                   </form>
                 </div>
               </div>
               <div *ngIf="editForm">
                 <button
-                  [disabled]="!editForm.dirty"
                   form="editForm"
                   type="submit"
                   class="btn btn-primary float-right"

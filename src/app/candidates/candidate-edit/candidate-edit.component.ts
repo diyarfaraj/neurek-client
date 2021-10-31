@@ -17,7 +17,7 @@ export class CandidateEditComponent implements OnInit {
   @ViewChild('editForm') editForm: NgForm = new NgForm([], []);
   candidate: Candidate;
   user: User;
-
+  experiences: Experience[];
   @HostListener('window:beforeunload', ['$event']) unloadNotification(
     $event: any
   ) {
@@ -48,8 +48,10 @@ export class CandidateEditComponent implements OnInit {
   }
 
   updateCandidate() {
-    console.log(this.candidate);
-    this.toastr.success('Profile updated');
-    this.editForm.reset(this.candidate.experiences);
+    this.canidateService.updateCandidate(this.candidate).subscribe(() => {
+      this.toastr.success('Profile updated');
+      this.editForm.resetForm(this.candidate);
+      this.loadCandidate();
+    });
   }
 }

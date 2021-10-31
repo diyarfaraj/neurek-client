@@ -1,6 +1,6 @@
 export interface Experience {
   id: number;
-  jobTtitle: string;
+  jobTitle: string;
   companyName: string;
   fromDate: Date;
   toDate: Date;

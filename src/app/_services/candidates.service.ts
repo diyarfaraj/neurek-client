@@ -19,4 +19,8 @@ export class CandidatesService {
     console.log('from candidateservice');
     return this.http.get<Candidate>(this.baseUrl + 'users/' + email);
   }
+
+  updateCandidate(candidate: Candidate) {
+    return this.http.put(this.baseUrl + 'users', candidate);
+  }
 }
