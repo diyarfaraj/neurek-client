@@ -25,6 +25,8 @@ import { CandidateDetailComponent } from './candidates/candidate-detail/candidat
 import { CandidateCardComponent } from './candidates/candidate-card/candidate-card.component';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { CandidateEditComponent } from './candidates/candidate-edit/candidate-edit.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -49,10 +51,12 @@ import { CandidateEditComponent } from './candidates/candidate-edit/candidate-ed
     BrowserAnimationsModule,
     FormsModule,
     SharedModule,
+    NgxSpinnerModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
     NavComponent,
     AccountService,
   ],
