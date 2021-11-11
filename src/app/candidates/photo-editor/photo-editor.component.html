@@ -11,28 +11,19 @@
     </div>
   </div>
 </div>
-<div class="row">
+<div class="row mt-3">
   <div class="col-md-3">
-    <h3>Select files</h3>
+    <h3>Add photos</h3>
 
     <div
       ng2FileDrop
       [ngClass]="{ 'nv-file-over': hasBaseDropZoneOver }"
       (fileOver)="fileOverBase($event)"
       [uploader]="uploader"
-      class="well my-drop-zone"
+      class="card bg-faded p-3 text-center mb-3 my-drop-zone"
     >
-      Base drop zone
-    </div>
-
-    <div
-      ng2FileDrop
-      [ngClass]="{ 'another-file-over-class': hasAnotherDropZoneOver }"
-      (fileOver)="fileOverAnother($event)"
-      [uploader]="uploader"
-      class="well my-drop-zone"
-    >
-      Another drop zone
+      <i class="fa fa-upload fa-3x"></i>
+      Drop photos here
     </div>
 
     Multiple
@@ -42,7 +33,11 @@
     <input type="file" ng2FileSelect [uploader]="uploader" />
   </div>
 
-  <div class="col-md-9" style="margin-bottom: 40px">
+  <div
+    class="col-md-9"
+    style="margin-bottom: 40px"
+    *ngIf="uploader?.queue?.length"
+  >
     <h3>Upload queue</h3>
     <p>Queue length: {{ uploader?.queue?.length }}</p>
 
@@ -51,9 +46,6 @@
         <tr>
           <th width="50%">Name</th>
           <th>Size</th>
-          <th>Progress</th>
-          <th>Status</th>
-          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -64,7 +56,7 @@
           <td *ngIf="uploader.options.isHTML5" nowrap>
             {{ item?.file?.size / 1024 / 1024 | number: ".2" }} MB
           </td>
-          <td *ngIf="uploader.options.isHTML5">
+          <!--     <td *ngIf="uploader.options.isHTML5">
             <div class="progress" style="margin-bottom: 0">
               <div
                 class="progress-bar"
@@ -72,8 +64,8 @@
                 [ngStyle]="{ width: item.progress + '%' }"
               ></div>
             </div>
-          </td>
-          <td class="text-center">
+          </td> -->
+          <!--       <td class="text-center">
             <span *ngIf="item.isSuccess"
               ><i class="glyphicon glyphicon-ok"></i
             ></span>
@@ -83,8 +75,8 @@
             <span *ngIf="item.isError"
               ><i class="glyphicon glyphicon-remove"></i
             ></span>
-          </td>
-          <td nowrap>
+          </td> -->
+          <!-- <td nowrap>
             <button
               type="button"
               class="btn btn-success btn-xs"
@@ -108,7 +100,7 @@
             >
               <span class="glyphicon glyphicon-trash"></span> Remove
             </button>
-          </td>
+          </td> -->
         </tr>
       </tbody>
     </table>
@@ -130,7 +122,7 @@
         (click)="uploader.uploadAll()"
         [disabled]="!uploader.getNotUploadedItems().length"
       >
-        <span class="glyphicon glyphicon-upload"></span> Upload all
+        <span class="fa fa-upload"></span> Upload all
       </button>
       <button
         type="button"
@@ -138,7 +130,7 @@
         (click)="uploader.cancelAll()"
         [disabled]="!uploader.isUploading"
       >
-        <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+        <span class="fa fa-ban"></span> Cancel all
       </button>
       <button
         type="button"
@@ -146,7 +138,7 @@
         (click)="uploader.clearQueue()"
         [disabled]="!uploader.queue.length"
       >
-        <span class="glyphicon glyphicon-trash"></span> Remove all
+        <span class="fa fa-trash"></span> Remove all
       </button>
     </div>
   </div>
