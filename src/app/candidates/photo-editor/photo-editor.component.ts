@@ -5,6 +5,8 @@ import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 import { environment } from 'src/environments/environment';
 import { take } from 'rxjs/operators';
+import { CandidatesService } from 'src/app/_services/candidates.service';
+import { Photo } from 'src/app/_models/photo';
 
 @Component({
   selector: 'app-photo-editor',
@@ -19,7 +21,10 @@ export class PhotoEditorComponent implements OnInit {
   newCanidate: Candidate;
   user: User;
 
-  constructor(private accountService: AccountService) {
+  constructor(
+    private accountService: AccountService,
+    private candidateService: CandidatesService
+  ) {
     this.user = {} as User;
     this.accountService.currentUser$
       .pipe(take(1))
@@ -54,5 +59,25 @@ export class PhotoEditorComponent implements OnInit {
         this.candidate.photos.push(photo);
       }
     };
+  }
+
+  setMainPhoto(photo: Photo) {
+    this.candidateService.setMainPhoto(photo.id).subscribe(() => {
+      this.user.photoUrl = photo.url;
+      this.accountService.setCurrentUser(this.user);
+      this.candidate.photoUrl = photo.url;
+      this.candidate.photos.forEach((p) => {
+        if (p.isMain) p.isMain = false;
+        if (p.id === photo.id) p.isMain = true;
+      });
+    });
+  }
+
+  deletePhoto(photoId: number) {
+    this.candidateService.deletePhoto(photoId).subscribe(() => {
+      this.candidate.photos = this.candidate.photos.filter(
+        (p) => p.id !== photoId
+      );
+    });
   }
 }
