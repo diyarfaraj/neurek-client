@@ -26,6 +26,7 @@ import { CandidateEditComponent } from './candidates/candidate-edit/candidate-ed
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 import { PhotoEditorComponent } from './candidates/photo-editor/photo-editor.component';
+import { TextInputComponent } from './_forms/text-input/text-input.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { PhotoEditorComponent } from './candidates/photo-editor/photo-editor.com
     CandidateCardComponent,
     CandidateEditComponent,
     PhotoEditorComponent,
+    TextInputComponent,
   ],
   imports: [
     BrowserModule,
