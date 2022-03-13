@@ -39,6 +39,7 @@ export class CandidateEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadCandidate();
+    console.log(this.candidate);
   }
 
   loadCandidate() {
