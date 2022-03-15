@@ -138,21 +138,34 @@
               </div>
             </tab>
             <tab heading="Utbildning">
-              <div *ngFor="let education of candidate.educations">
-                <div class="work-container">
-                  <h3>{{ education.majoredIn }}- {{ education.city }}</h3>
-                  <h4>
-                    <i class="far fa-calendar-alt"></i
-                    >{{ education.educationStartDate }} to
-                    <span class="badge badge-info">{{
-                      education.educationEndDate
-                    }}</span>
-                  </h4>
-                  <p>
-                    {{ education.educationDescription }}
-                  </p>
+              <div
+                *ngIf="
+                  candidate.educations !== null &&
+                    candidate.educations?.length > 0;
+                  else noEducation
+                "
+              >
+                <div *ngFor="let education of candidate.educations">
+                  <div class="work-container">
+                    <h3>{{ education.majoredIn }}- {{ education.city }}</h3>
+                    <h4>
+                      <i class="far fa-calendar-alt"></i
+                      >{{ education.educationStartDate }} to
+                      <span class="badge badge-info">{{
+                        education.educationEndDate
+                      }}</span>
+                    </h4>
+                    <p>
+                      {{ education.educationDescription }}
+                    </p>
+                  </div>
                 </div>
               </div>
+              <ng-template #noEducation>
+                <div class="work-container">
+                  <h3>Pleade add education</h3>
+                </div>
+              </ng-template>
             </tab>
             <tab heading="Edit photos">
               <app-photo-editor [candidate]="candidate"> </app-photo-editor>

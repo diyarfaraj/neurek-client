@@ -46,6 +46,7 @@ export class CandidateEditComponent implements OnInit {
     this.canidateService
       .getCandidate(this.user.email)
       .subscribe((candidate) => (this.candidate = candidate));
+    console.log(this.candidate);
   }
 
   updateCandidate() {
