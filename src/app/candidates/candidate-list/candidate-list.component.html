@@ -1,6 +1,6 @@
 <div class="container">
   <div class="col-md-12">
-    <div *ngFor="let candidate of candidates$ | async">
+    <div *ngFor="let candidate of candidates">
       <app-candidate-card [candidate]="candidate"></app-candidate-card>
     </div>
   </div>
