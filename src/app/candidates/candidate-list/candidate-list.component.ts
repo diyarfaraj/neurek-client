@@ -12,9 +12,14 @@ import { CandidatesService } from 'src/app/_services/candidates.service';
 })
 export class CandidateListComponent implements OnInit {
   candidates: Candidate[];
-  pagination: Pagination;
+  pagination: Pagination = {
+    currentPage: 0,
+    totalItems: 0,
+    itemsPerPage: 0,
+    totalPages: 0,
+  };
   pageNumber = 1;
-  pageSize = 5;
+  pageSize = 3;
   constructor(private candidateService: CandidatesService) {}
 
   ngOnInit(): void {
@@ -28,5 +33,10 @@ export class CandidateListComponent implements OnInit {
         this.candidates = response.result;
         this.pagination = response.pagination;
       });
+  }
+
+  pageChanged(event: any) {
+    this.pageNumber = event.page;
+    this.loadCandidates();
   }
 }
